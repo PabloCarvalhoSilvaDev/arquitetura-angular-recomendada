@@ -26,6 +26,9 @@
   border-radius: 999px;
   font-size: 1.1rem;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .layout__brand {
