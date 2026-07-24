@@ -27,12 +27,12 @@ src/
 
 ## Camadas
 
-| Pasta | O que vai aqui | O que não vai |
-| --- | --- | --- |
-| `core/` | Auth, interceptors, guards, config de app | Componentes de tela, lógica de feature |
-| `shared/` | Botões, headers, pipes, directives genéricos | Serviços com regra de negócio |
-| `layout/` | Header, footer, sidebar, shell | Páginas de feature |
-| `features/` | Tudo de um domínio (UI + rotas + serviços locais) | Infraestrutura global |
+| Pasta         | O que vai aqui                                      | O que não vai                          |
+| ------------- | --------------------------------------------------- | --------------------------------------- |
+| `core/`     | Auth, interceptors, guards, config de app           | Componentes de tela, lógica de feature |
+| `shared/`   | Botões, headers, pipes, directives genéricos      | Serviços com regra de negócio         |
+| `layout/`   | Header, footer, sidebar, shell                      | Páginas de feature                     |
+| `features/` | Tudo de um domínio (UI + rotas + serviços locais) | Infraestrutura global                   |
 
 ## Princípios do Style Guide
 
