@@ -1,0 +1,15 @@
+<div class="layout">
+  <header class="layout__header">
+    <a routerLink="/" class="layout__brand">Arquitetura Angular</a>
+    <nav class="layout__nav" aria-label="Principal">
+      <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
+        Home
+      </a>
+      <a routerLink="/about" routerLinkActive="is-active">Sobre</a>
+    </nav>
+  </header>
+
+  <main class="layout__content">
+    <router-outlet />
+  </main>
+</div>
