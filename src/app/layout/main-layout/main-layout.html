@@ -1,15 +1,26 @@
 <div class="layout">
   <header class="layout__header">
+    <button
+      type="button"
+      class="layout__toggle"
+      (click)="toggleSidebar()"
+      aria-label="Alternar sidebar"
+    >
+      ☰
+    </button>
+
     <a routerLink="/" class="layout__brand">Arquitetura Angular</a>
-    <nav class="layout__nav" aria-label="Principal">
-      <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
-        Home
-      </a>
-      <a routerLink="/about" routerLinkActive="is-active">Sobre</a>
-    </nav>
+
+    <span class="layout__user">{{ userName }}</span>
   </header>
 
-  <main class="layout__content">
-    <router-outlet />
-  </main>
+  <div class="layout__body">
+    <aside class="layout__sidebar" [class.is-collapsed]="!isSidebarOpen">
+      <app-sidebar-layout />
+    </aside>
+
+    <main class="layout__content">
+      <router-outlet />
+    </main>
+  </div>
 </div>

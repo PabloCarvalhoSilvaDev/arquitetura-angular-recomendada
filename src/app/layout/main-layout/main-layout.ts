@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
+
+import { SidebarLayout } from '../sidebar-layout/sidebar-layout';
 
 /**
  * Shell visual da aplicação (header + área de conteúdo).
@@ -7,8 +9,15 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
  */
 @Component({
   selector: 'app-main-layout',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterOutlet, SidebarLayout],
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.css',
 })
-export class MainLayout {}
+export class MainLayout {
+  isSidebarOpen = false;
+  userName = 'Pablo Carvalho Silva';
+
+  toggleSidebar(): void {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+}
