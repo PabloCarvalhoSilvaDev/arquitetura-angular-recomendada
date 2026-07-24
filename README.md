@@ -1,59 +1,67 @@
-# ArquiteturaAngularRecomendada
+# Arquitetura Angular Recomendada
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.5.
+Projeto Angular 20 com estrutura de pastas alinhada ao [Style Guide oficial](https://angular.dev/style-guide) e às práticas modernas (standalone + feature-first).
 
-## Development server
+## Estrutura
 
-To start a local development server, run:
-
-```bash
-ng serve
+```
+src/
+├── app/
+│   ├── core/                 # Infraestrutura global (singletons)
+│   │   ├── auth/             # Auth + guard no mesmo conceito
+│   │   └── http/             # Interceptors HTTP
+│   ├── shared/               # UI reutilizável, sem regra de negócio
+│   │   └── page-header/
+│   ├── layout/               # Shell da aplicação (header, nav, outlet)
+│   │   └── main-layout/
+│   ├── features/             # Domínios de negócio (lazy-loaded)
+│   │   ├── home/
+│   │   └── about/
+│   ├── app.config.ts
+│   ├── app.routes.ts
+│   └── app.ts
+├── environments/
+├── main.ts
+└── styles.css
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Camadas
 
-## Code scaffolding
+| Pasta | O que vai aqui | O que não vai |
+| --- | --- | --- |
+| `core/` | Auth, interceptors, guards, config de app | Componentes de tela, lógica de feature |
+| `shared/` | Botões, headers, pipes, directives genéricos | Serviços com regra de negócio |
+| `layout/` | Header, footer, sidebar, shell | Páginas de feature |
+| `features/` | Tudo de um domínio (UI + rotas + serviços locais) | Infraestrutura global |
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Princípios do Style Guide
 
-```bash
-ng generate component component-name
-```
+1. **Organize por feature**, não por tipo (`components/`, `services/`, `pipes/`).
+2. **Agrupe arquivos relacionados** no mesmo diretório (`.ts`, `.html`, `.css`, `.spec.ts`).
+3. **Um conceito por arquivo** (um componente/serviço por arquivo, em geral).
+4. **Features com rotas próprias** e lazy loading via `loadChildren`.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## Como adicionar uma feature
 
 ```bash
-ng build
+mkdir src/app/features/produtos
+ng generate component features/produtos/produto-lista --standalone
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Crie `produtos.routes.ts` e registre em `app.routes.ts`:
 
-## Running unit tests
+```ts
+{
+  path: 'produtos',
+  loadChildren: () =>
+    import('./features/produtos/produtos.routes').then((m) => m.PRODUTOS_ROUTES),
+}
+```
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Scripts
 
 ```bash
-ng test
+npm start      # ng serve
+npm run build  # build de produção
+npm test       # testes unitários
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
