@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
-import { SidebarLayout } from '../sidebar-layout/sidebar-layout';
+import { SidebarLayout } from '../sidebar/sidebar-layout';
 
 /**
  * Shell visual da aplicação (header + área de conteúdo).
@@ -14,10 +14,10 @@ import { SidebarLayout } from '../sidebar-layout/sidebar-layout';
   styleUrl: './main-layout.css',
 })
 export class MainLayout {
-  isSidebarOpen = false;
-  userName = 'Pablo Carvalho Silva';
+  protected isSidebarOpen = false;
+  protected readonly userName = 'Pablo Carvalho Silva';
 
-  toggleSidebar(): void {
+  protected toggleSidebar(): void {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
 }

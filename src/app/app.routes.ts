@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { MainLayout } from './layout/main-layout/main-layout';
+import { MainLayout } from './layout/main/main-layout';
 
 export const routes: Routes = [
   {
@@ -8,16 +8,18 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./features/home/home.routes').then((m) => m.HOME_ROUTES),
+        title: 'Home',
+        loadComponent: () => import('./features/home/home').then((m) => m.Home),
       },
       {
-        path: 'about',
-        loadChildren: () => import('./features/about/about.routes').then((m) => m.ABOUT_ROUTES),
+        path: 'sobre',
+        title: 'Sobre',
+        loadComponent: () => import('./features/about/about').then((m) => m.About),
       },
       {
         path: 'produtos',
-        loadChildren: () =>
-          import('./features/products/products.routes').then((m) => m.PRODUCTS_ROUTES),
+        title: 'Produtos',
+        loadComponent: () => import('./features/products/products').then((m) => m.Products),
       },
     ],
   },

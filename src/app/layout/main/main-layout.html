@@ -5,6 +5,8 @@
       class="layout__toggle"
       (click)="toggleSidebar()"
       aria-label="Alternar sidebar"
+      aria-controls="main-sidebar"
+      [attr.aria-expanded]="isSidebarOpen"
     >
       <i class="pi pi-bars"></i>
     </button>
@@ -15,7 +17,13 @@
   </header>
 
   <div class="layout__body">
-    <aside class="layout__sidebar" [class.is-collapsed]="!isSidebarOpen">
+    <aside
+      id="main-sidebar"
+      class="layout__sidebar"
+      [class.is-collapsed]="!isSidebarOpen"
+      [attr.aria-hidden]="!isSidebarOpen"
+      [attr.inert]="!isSidebarOpen ? '' : null"
+    >
       <app-sidebar-layout />
     </aside>
 

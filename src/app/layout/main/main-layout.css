@@ -24,11 +24,17 @@
   width: 40px;
   height: 40px;
   border-radius: 999px;
-  font-size: 1.1rem;
+  /* tamanho inteiro evita artefato de anti-aliasing no pi-bars (barra inferior “dobrada”) */
+  font-size: 32px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+.layout__toggle .pi {
+  line-height: 1;
+  display: block;
 }
 
 .layout__brand {
