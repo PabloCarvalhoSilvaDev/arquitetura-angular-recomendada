@@ -8,7 +8,7 @@ Projeto Angular 20 alinhado ao [Style Guide oficial](https://angular.dev/style-g
 src/
 ├── app/
 │   ├── core/                   # Infraestrutura global (quando necessária)
-│   │   └── titulo/             # titulo.strategy.ts → TituloAplicacaoStrategy
+│   │   └── titulo/             # titulo-aplicacao.config.ts, titulo-aplicacao.strategy.ts
 │   ├── shared/                 # UI reutilizável, sem regra de negócio
 │   │   └── cabecalho-pagina/   # cabecalho-pagina.ts → CabecalhoPagina
 │   ├── layout/                 # Shell da aplicação
@@ -35,7 +35,7 @@ src/
 | `features/` | Tudo de um domínio (UI + serviços locais)         | Infraestrutura global                   |
 
 Crie `core/` somente quando houver infraestrutura global real. Neste projeto, `core/titulo`
-compõe o título da aba no formato `Início · Arquitetura Angular`.
+define o título em `titulo-aplicacao.config.ts` e compõe as abas no formato `Início · Arquitetura Angular`.
 
 ## Princípios do Style Guide
 

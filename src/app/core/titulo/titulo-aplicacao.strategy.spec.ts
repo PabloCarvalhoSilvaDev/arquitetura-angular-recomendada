@@ -2,7 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
 import { RouterStateSnapshot } from '@angular/router';
 
-import { TituloAplicacaoStrategy } from './titulo.strategy';
+import { TITULO_APLICACAO } from './titulo-aplicacao.config';
+import { TituloAplicacaoStrategy } from './titulo-aplicacao.strategy';
 
 describe('TituloAplicacaoStrategy', () => {
   let strategy: TituloAplicacaoStrategy;
@@ -20,7 +21,7 @@ describe('TituloAplicacaoStrategy', () => {
   it('deve usar o título padrão quando a rota não define título', () => {
     strategy.updateTitle({} as RouterStateSnapshot);
 
-    expect(title.getTitle()).toBe('Arquitetura Angular');
+    expect(title.getTitle()).toBe(TITULO_APLICACAO);
   });
 
   it('deve compor o título da página com o sufixo da aplicação', () => {
@@ -28,6 +29,6 @@ describe('TituloAplicacaoStrategy', () => {
 
     strategy.updateTitle({} as RouterStateSnapshot);
 
-    expect(title.getTitle()).toBe('Início · Arquitetura Angular');
+    expect(title.getTitle()).toBe(`Início · ${TITULO_APLICACAO}`);
   });
 });
