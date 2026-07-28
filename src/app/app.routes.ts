@@ -1,25 +1,26 @@
 import { Routes } from '@angular/router';
-import { MainLayout } from './layout/main/main-layout';
+
+import { Principal } from './layout/principal/principal';
 
 export const routes: Routes = [
   {
     path: '',
-    component: MainLayout,
+    component: Principal,
     children: [
       {
         path: '',
-        title: 'Home',
-        loadComponent: () => import('./features/home/home').then((m) => m.Home),
+        title: 'Início',
+        loadComponent: () => import('./features/inicio/inicio').then((m) => m.Inicio),
       },
       {
         path: 'sobre',
         title: 'Sobre',
-        loadComponent: () => import('./features/about/about').then((m) => m.About),
+        loadComponent: () => import('./features/sobre/sobre').then((m) => m.Sobre),
       },
       {
         path: 'produtos',
         title: 'Produtos',
-        loadComponent: () => import('./features/products/products').then((m) => m.Products),
+        loadComponent: () => import('./features/produtos/produtos').then((m) => m.Produtos),
       },
     ],
   },

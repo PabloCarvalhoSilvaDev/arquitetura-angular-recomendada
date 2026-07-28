@@ -1,21 +1,23 @@
 # Arquitetura Angular Recomendada
 
-Projeto Angular 20 alinhado ao [Style Guide oficial](https://angular.dev/style-guide), com componentes standalone e organização por feature.
+Projeto Angular 20 alinhado ao [Style Guide oficial](https://angular.dev/style-guide), com componentes standalone e organização por feature. Pastas, arquivos e classes usam o mesmo nome em pt-BR.
 
 ## Estrutura
 
 ```
 src/
 ├── app/
-│   ├── shared/               # UI reutilizável, sem regra de negócio
-│   │   └── page-header/
-│   ├── layout/               # Shell da aplicação (header, nav, outlet)
-│   │   ├── main-layout/
-│   │   └── sidebar-layout/
-│   ├── features/             # Áreas funcionais carregadas sob demanda
-│   │   ├── home/
-│   │   ├── about/
-│   │   └── products/
+│   ├── core/                   # Infraestrutura global (quando necessária)
+│   │   └── titulo/             # titulo.strategy.ts → TituloAplicacaoStrategy
+│   ├── shared/                 # UI reutilizável, sem regra de negócio
+│   │   └── cabecalho-pagina/   # cabecalho-pagina.ts → CabecalhoPagina
+│   ├── layout/                 # Shell da aplicação
+│   │   ├── principal/          # principal.ts → Principal
+│   │   └── menu-lateral/       # menu-lateral.ts → MenuLateral
+│   ├── features/               # Áreas funcionais carregadas sob demanda
+│   │   ├── inicio/             # inicio.ts → Inicio
+│   │   ├── sobre/              # sobre.ts → Sobre
+│   │   └── produtos/           # produtos.ts → Produtos
 │   ├── app.config.ts
 │   ├── app.routes.ts
 │   └── app.ts
@@ -25,37 +27,39 @@ src/
 
 ## Camadas
 
-| Pasta         | O que vai aqui                                      | O que não vai                  |
-| ------------- | --------------------------------------------------- | ------------------------------- |
-| `shared/`   | Botões, headers, pipes, directives genéricos      | Serviços com regra de negócio |
-| `layout/`   | Header, footer, sidebar, shell                      | Páginas de feature             |
-| `features/` | Tudo de um domínio (UI + rotas + serviços locais) | Infraestrutura global           |
+| Pasta         | O que vai aqui                                      | O que não vai                          |
+| ------------- | --------------------------------------------------- | --------------------------------------- |
+| `core/`     | Auth, interceptors,`TitleStrategy`, config de app | Componentes de tela, lógica de feature |
+| `shared/`   | Botões, cabeçalhos, pipes, directives genéricos  | Serviços com regra de negócio         |
+| `layout/`   | Header, menu lateral, shell                         | Páginas de feature                     |
+| `features/` | Tudo de um domínio (UI + serviços locais)         | Infraestrutura global                   |
 
-Crie `core/` somente quando houver infraestrutura global real, como autenticação ou
-interceptors. Pastas vazias e código de exemplo não utilizado aumentam a complexidade sem benefício.
+Crie `core/` somente quando houver infraestrutura global real. Neste projeto, `core/titulo`
+compõe o título da aba no formato `Início · Arquitetura Angular`.
 
 ## Princípios do Style Guide
 
 1. **Organize por feature**, não por tipo (`components/`, `services/`, `pipes/`).
 2. **Agrupe arquivos relacionados** no mesmo diretório (`.ts`, `.html`, `.css`, `.spec.ts`).
 3. **Um conceito por arquivo** (um componente/serviço por arquivo, em geral).
-4. Use `loadComponent` para telas isoladas e `loadChildren` quando uma feature possuir várias rotas.
+4. **Nome consistente**: pasta = arquivo = classe (`produtos/produtos.ts` → `Produtos`).
+5. Use `loadComponent` para telas isoladas e `loadChildren` quando uma feature possuir várias rotas.
 
 ## Como adicionar uma feature
 
 ```bash
-mkdir src/app/features/products
-ng generate component features/products/product-list --standalone
+mkdir src/app/features/clientes
+ng generate component features/clientes/clientes --standalone
 ```
 
 Para uma única tela, registre diretamente em `app.routes.ts`:
 
 ```ts
 {
-  path: 'produtos',
-  title: 'Produtos',
+  path: 'clientes',
+  title: 'Clientes',
   loadComponent: () =>
-    import('./features/products/products').then((m) => m.Products),
+    import('./features/clientes/clientes').then((m) => m.Clientes),
 }
 ```
 

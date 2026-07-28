@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'app-sidebar-layout',
+  selector: 'app-menu-lateral',
   imports: [RouterLink, RouterLinkActive],
-  templateUrl: './sidebar-layout.html',
-  styleUrl: './sidebar-layout.css',
+  templateUrl: './menu-lateral.html',
+  styleUrl: './menu-lateral.css',
 })
-export class SidebarLayout {}
+export class MenuLateral {}

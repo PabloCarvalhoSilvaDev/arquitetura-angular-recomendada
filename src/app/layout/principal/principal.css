@@ -1,4 +1,4 @@
-.layout {
+.principal {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@
   font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
-.layout__header {
+.principal__cabecalho {
   display: grid;
   grid-template-columns: 48px 1fr 160px;
   align-items: center;
@@ -17,7 +17,7 @@
   border-bottom: 1px solid #e8e8e4;
 }
 
-.layout__toggle {
+.principal__alternar {
   border: 0;
   background: #f3f4f6;
   color: #111827;
@@ -25,37 +25,37 @@
   height: 40px;
   border-radius: 999px;
   /* tamanho inteiro evita artefato de anti-aliasing no pi-bars (barra inferior “dobrada”) */
-  font-size: 32px;
+  font-size: 16px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
-.layout__toggle .pi {
+.principal__alternar .pi {
   line-height: 1;
   display: block;
 }
 
-.layout__brand {
+.principal__marca {
   justify-self: center;
   font-weight: 700;
   text-decoration: none;
   color: inherit;
 }
 
-.layout__user {
+.principal__usuario {
   justify-self: end;
   font-weight: 600;
   color: #374151;
 }
 
-.layout__body {
+.principal__corpo {
   display: flex;
   flex: 1;
 }
 
-.layout__sidebar {
+.principal__menu {
   width: 240px;
   background: #fff;
   border-right: 1px solid #e8e8e4;
@@ -66,12 +66,12 @@
   overflow: hidden;
 }
 
-.layout__sidebar.is-collapsed {
+.principal__menu.is-recolhido {
   width: 0;
   padding: 0;
 }
 
-.layout__content {
+.principal__conteudo {
   width: min(720px, 100%);
   margin: 0 auto;
   padding: 2rem 1.5rem;
