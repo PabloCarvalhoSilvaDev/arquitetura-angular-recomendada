@@ -10,23 +10,38 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #1a1a1a;
+  color: var(--cor-marca-escura);
 }
 
 .menu-lateral__nav {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .menu-lateral__nav a {
-  color: #5c5c5c;
+  color: var(--cor-texto-suave);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s ease;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
 }
 
-.menu-lateral__nav a:hover,
+.menu-lateral__nav a:hover {
+  background: var(--cor-marca-suave);
+  color: var(--cor-marca-escura);
+}
+
 .menu-lateral__nav a.is-ativo {
-  color: #1a1a1a;
+  background: var(--cor-marca);
+  color: var(--cor-texto-invertido);
+  font-weight: 700;
+}
+
+.menu-lateral__nav a:focus-visible {
+  outline: 2px solid var(--cor-marca);
+  outline-offset: 2px;
 }

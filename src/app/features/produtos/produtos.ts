@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { CabecalhoPagina } from '../../shared/cabecalho-pagina/cabecalho-pagina';
 
 @Component({

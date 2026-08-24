@@ -6,10 +6,20 @@
   margin: 0;
   font-size: 1.75rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--cor-texto);
+}
+
+.cabecalho-pagina h1::after {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  margin-top: 0.5rem;
+  background: var(--cor-marca);
+  border-radius: 999px;
 }
 
 .cabecalho-pagina p {
   margin: 0.5rem 0 0;
-  color: #5c5c5c;
+  color: var(--cor-texto-suave);
 }

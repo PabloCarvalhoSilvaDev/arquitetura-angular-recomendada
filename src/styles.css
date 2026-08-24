@@ -1,6 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'primeicons/primeicons.css';
 
+:root {
+  /* Marca Angular (escudo oficial): vermelho #DD0031 e #C3002F */
+  --cor-marca: #dd0031;
+  --cor-marca-escura: #c3002f;
+  --cor-superficie: #ffffff;
+  --cor-fundo: #fff7f8;
+  --cor-texto: #1a1a1a;
+  --cor-texto-suave: #4a4a4a;
+  --cor-texto-invertido: #ffffff;
+  --cor-borda: #f0c9d0;
+  --cor-marca-suave: #fdecef;
+}
+
 *,
 *::before,
 *::after {
@@ -9,4 +22,11 @@
 
 body {
   margin: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+:focus-visible {
+  outline: 2px solid var(--cor-marca);
+  outline-offset: 2px;
 }
