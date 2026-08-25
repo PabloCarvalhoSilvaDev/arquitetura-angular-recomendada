@@ -1,0 +1,11 @@
+.empresas {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.empresas p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--cor-texto);
+}
