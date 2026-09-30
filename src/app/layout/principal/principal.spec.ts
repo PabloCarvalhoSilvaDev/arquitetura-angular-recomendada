@@ -21,7 +21,9 @@ describe('Principal', () => {
     fixture.detectChanges();
 
     const elemento = fixture.nativeElement as HTMLElement;
-    expect(elemento.querySelector('.principal__usuario')?.textContent).toContain('Pablo Carvalho Silva');
+    expect(elemento.querySelector('.principal__usuario')?.textContent).toContain(
+      'Pablo Carvalho Silva',
+    );
   });
 
   it('deve alternar o menu lateral', () => {

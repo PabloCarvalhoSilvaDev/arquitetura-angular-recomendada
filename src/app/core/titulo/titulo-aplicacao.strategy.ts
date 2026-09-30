@@ -10,8 +10,6 @@ export class TituloAplicacaoStrategy extends TitleStrategy {
 
   override updateTitle(snapshot: RouterStateSnapshot): void {
     const tituloPagina = this.buildTitle(snapshot);
-    this.title.setTitle(
-      tituloPagina ? `${tituloPagina} · ${TITULO_APLICACAO}` : TITULO_APLICACAO,
-    );
+    this.title.setTitle(tituloPagina ? `${tituloPagina} · ${TITULO_APLICACAO}` : TITULO_APLICACAO);
   }
 }

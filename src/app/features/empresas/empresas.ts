@@ -7,6 +7,4 @@ import { CabecalhoPagina } from '../../shared/cabecalho-pagina/cabecalho-pagina'
   templateUrl: './empresas.html',
   styleUrl: './empresas.css',
 })
-export class Empresas {
-
-}
+export class Empresas {}
