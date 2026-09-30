@@ -63,6 +63,10 @@ Para uma única tela, registre diretamente em `app.routes.ts`:
 }
 ```
 
+## Regras para IA e padrões de código
+
+Convenções Angular 20, acessibilidade e arquitetura deste template estão em [`.cursor/rules/angular-20.mdc`](.cursor/rules/angular-20.mdc).
+
 ## Scripts
 
 ```bash

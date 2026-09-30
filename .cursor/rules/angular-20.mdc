@@ -1,0 +1,110 @@
+---
+description: Angular 20, TypeScript, acessibilidade e arquitetura deste template (core/shared/layout/features, pt-BR).
+globs: "**/*.{ts,html,scss,css}"
+alwaysApply: false
+---
+
+# Angular 20 — padrões deste repositório
+
+Projeto Angular 20 standalone, organizado por feature. Siga o [Style Guide](https://angular.dev/style-guide) e as convenções abaixo.
+
+## Arquitetura (template)
+
+| Pasta | Conteúdo | Evitar |
+| ----- | -------- | ------ |
+| `core/` | Auth, interceptors, `TitleStrategy`, config global | Telas e regra de negócio de feature |
+| `shared/` | UI reutilizável (sem regra de negócio) | Serviços de domínio |
+| `layout/` | Shell (menu, layout principal) | Páginas de feature |
+| `features/` | Tudo de um domínio (UI + serviços locais) | Infra global |
+
+- Organize **por feature**, não por tipo (`components/`, `services/`).
+- Agrupe `.ts`, `.html`, `.css`, `.spec.ts` no mesmo diretório.
+- **Nome em pt-BR**: pasta = arquivo principal = classe (`features/produtos/produtos.ts` → `Produtos`).
+- Rotas de tela: `loadComponent` no `app.routes.ts`; use `loadChildren` quando a feature tiver várias rotas internas.
+- Crie pastas em `core/` só quando houver infraestrutura global real.
+- Templates/estilos externos: caminhos **relativos ao `.ts` do componente** (`./produtos.html`).
+
+## TypeScript
+
+- Mantenha `strict` (já no `tsconfig.json`).
+- Prefira inferência quando o tipo for óbvio; evite `any`; use `unknown` se precisar narrow.
+
+```typescript
+// Evite
+let name: string = 'Angular';
+// Prefira
+let name = 'Angular';
+```
+
+## Angular geral
+
+- Componentes, diretivas e pipes **standalone**; não use `NgModule` em código novo.
+- **Não** defina `standalone: true` nos decorators (padrão implícito no Angular 20+).
+- Lazy loading para rotas de feature (`loadComponent` / `loadChildren`).
+- Host: use o objeto `host` no decorator; **não** use `@HostBinding` / `@HostListener`.
+- Imagens estáticas em `<img>`: prefira `NgOptimizedImage` (não serve para base64 inline).
+- Serviços singleton: `providedIn: 'root'`, **ou** registro em `app.config.ts` (ex.: `TitleStrategy`).
+
+```typescript
+// Evite
+@Component({ standalone: true })
+// Prefira
+@Component({ /* standalone implícito */ })
+```
+
+## Componentes
+
+- Responsabilidade única; componentes pequenos.
+- `input()` / `output()` em vez de `@Input()` / `@Output()`.
+- Estado local reativo: `signal()`; derivados: `computed()`. Telas só de apresentação podem usar apenas `input()`.
+- **SHOULD**: `changeDetection: ChangeDetectionStrategy.OnPush` em componentes novos ou alterados.
+- Templates pequenos: inline; maiores: arquivo `.html` externo.
+- Formulários complexos: Reactive Forms; simples ocasionais podem ser template-driven.
+- **Não** use `ngClass` / `ngStyle`; use bindings nativos de `class` e `style`.
+
+```typescript
+import { input, output } from '@angular/core';
+userId = input<string>('');
+userSelected = output<string>();
+```
+
+```html
+<section [class.active]="isActive"></section>
+<section [style.font-size.px]="fontSize"></section>
+```
+
+## Estado (signals)
+
+- Transformações previsíveis e puras.
+- **Não** use `mutate`; use `set` ou `update`.
+
+## Templates
+
+- Lógica complexa no TypeScript, não no HTML.
+- Control flow nativo: `@if`, `@for`, `@switch` — **não** `*ngIf`, `*ngFor`, `*ngSwitch`.
+- Observables: pipe `async`.
+- **Não** use arrow functions, regex ou globals (`new Date()`) no template.
+
+```html
+@if (isVisible) {
+  <section>Conteúdo</section>
+}
+@for (item of items; track item.id) {
+  <section>{{ item }}</section>
+}
+```
+
+## Serviços
+
+- Uma responsabilidade clara por serviço.
+- Prefira `inject()` em vez de injeção só por construtor (especialmente fora do construtor).
+
+```typescript
+private myService = inject(MyService);
+```
+
+## Acessibilidade
+
+- **SHOULD** atender WCAG 2.1 AA em UI nova (contraste, foco, semântica, ARIA quando necessário).
+- Navegação e landmarks: labels em `<nav>`, hierarquia de headings, estados de foco visíveis.
+- Antes de release de feature visível, valide com AXE ou equivalente quando possível.
