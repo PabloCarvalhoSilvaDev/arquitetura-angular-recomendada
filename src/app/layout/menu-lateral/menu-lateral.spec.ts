@@ -21,9 +21,10 @@ describe('MenuLateral', () => {
     fixture.detectChanges();
 
     const links = fixture.nativeElement.querySelectorAll('.menu-lateral__nav a');
-    expect(links.length).toBe(3);
+    expect(links.length).toBe(4);
     expect(links[0].textContent?.trim()).toBe('Início');
     expect(links[1].textContent?.trim()).toBe('Sobre');
     expect(links[2].textContent?.trim()).toBe('Produtos');
+    expect(links[3].textContent?.trim()).toBe('Empresas');
   });
 });
