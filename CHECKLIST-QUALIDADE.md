@@ -117,12 +117,12 @@ Resultados do laboratório:
 
 Marque se você revisou conscientemente (não há comando no repo hoje).
 
-| OK  | Item                                                     |
-| --- | -------------------------------------------------------- |
-| [ ] | Feature A não importa código de feature B              |
-| [ ] | Menu / rotas alinhados (`app.routes.ts` + links)       |
-| []  | Textos e títulos coerentes com`TitleStrategy`         |
-| [ ] | WCAG AA amplo / AXE em E2E (quando existir pipeline E2E) |
+| OK     | Item                                                     |
+| ------ | -------------------------------------------------------- |
+| [ x ] | Feature A não importa código de feature B              |
+| [ x ]    | Menu / rotas alinhados (`app.routes.ts` + links)       |
+| [ x ]  | Textos e títulos coerentes com`TitleStrategy`         |
+| [ ]    | WCAG AA amplo / AXE em E2E (quando existir pipeline E2E) |
 
 ---
 
