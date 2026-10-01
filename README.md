@@ -67,10 +67,15 @@ Para uma única tela, registre diretamente em `app.routes.ts`:
 
 Convenções Angular 20, acessibilidade e arquitetura deste template estão em [`.cursor/rules/angular-20.mdc`](.cursor/rules/angular-20.mdc).
 
+## Qualidade e checklist
+
+Use [CHECKLIST-QUALIDADE.md](CHECKLIST-QUALIDADE.md) para marcar pipeline (build, lint, test, Prettier), convenções do template e testes de violação opcionais.
+
 ## Scripts
 
 ```bash
 npm start      # ng serve
 npm run build  # build de produção
+npm run lint   # ESLint (angular-eslint)
 npm test       # testes unitários
 ```

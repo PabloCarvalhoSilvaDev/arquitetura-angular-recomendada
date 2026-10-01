@@ -1,4 +1,5 @@
 import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy } from '@angular/core';
 
 /**
  * Componente reutilizável de UI.
@@ -8,6 +9,7 @@ import { Component, input } from '@angular/core';
   selector: 'app-cabecalho-pagina',
   templateUrl: './cabecalho-pagina.html',
   styleUrl: './cabecalho-pagina.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CabecalhoPagina {
   readonly titulo = input.required<string>();
