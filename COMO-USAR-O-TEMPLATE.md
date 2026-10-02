@@ -11,16 +11,19 @@ https://github.com/PabloCarvalhoSilvaDev/arquitetura-angular-recomendada
 ## Pré-requisitos
 
 - [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/) (LTS recomendado)
-- npm (vem com o Node.js)
+- [Node.js](https://nodejs.org/) — versão fixada em [`.nvmrc`](.nvmrc) (recomendado: [nvm](https://github.com/nvm-sh/nvm) / nvm-windows)
+- npm (vem com o Node)
 
-Confira as versões no terminal:
+Confira no terminal:
 
 ```bash
 git --version
+nvm use          # ou: nvm install  (lê .nvmrc)
 node --version
 npm --version
 ```
+
+**Angular CLI:** não é necessário `npm install -g @angular/cli`. Na pasta do projeto use `npx ng ...` ou `npm run ng -- ...`.
 
 ---
 
@@ -46,6 +49,7 @@ No GitHub, abra o repositório do template:
 ```bash
 git clone https://github.com/SEU-USUARIO/SEU-NOVO-PROJETO.git
 cd SEU-NOVO-PROJETO
+nvm use
 npm install
 npm start
 ```
@@ -104,6 +108,7 @@ cd meu-projeto
 git init
 git add .
 git commit -m "chore: projeto inicial a partir do template de arquitetura Angular"
+nvm use
 npm install
 ```
 
@@ -113,23 +118,35 @@ Em seguida, adicione o `origin` e faça o `push`, como na opção 2.
 
 ## Depois de baixar
 
-1. Instale as dependências e suba o servidor:
+1. Instale dependências e suba o servidor:
 
    ```bash
+   nvm use
    npm install
    npm start
    ```
 
    A aplicação fica em `http://localhost:4200/`.
 
-2. Ajuste o nome do projeto em:
+2. Valide a qualidade (recomendado antes do primeiro commit no produto):
+
+   ```bash
+   npm run build
+   npm run lint
+   npm test
+   npm run format:check
+   ```
+
+   Checklist detalhado: [CHECKLIST-QUALIDADE.md](CHECKLIST-QUALIDADE.md).
+
+3. Ajuste o nome do projeto em:
 
    - `package.json` → campo `"name"`
    - `angular.json` → chave em `"projects"`
 
-3. Troque textos de exemplo (título da aplicação, menu, páginas de feature) pelo conteúdo do produto real.
+4. Troque textos de exemplo (título em `core/titulo/titulo-aplicacao.config.ts`, menu, páginas) pelo conteúdo do produto real.
 
-4. Não commite `node_modules/`. Ele já está no `.gitignore`.
+5. Não commite `node_modules/`. Ele já está no `.gitignore`.
 
 ---
 
@@ -164,4 +181,4 @@ git remote add origin https://github.com/SEU-USUARIO/SEU-NOVO-PROJETO.git
 | Precisa de uma cópia local independente | Clone, apague `.git`, rode `git init` |
 | Quer só os arquivos, sem histórico | `npx degit ...` e depois `git init` |
 
-A estrutura de pastas (`core/`, `shared/`, `layout/`, `features/`) e como criar uma feature nova estão no [README.md](README.md).
+Estrutura (`core/`, `shared/`, `layout/`, `features/`), scripts e qualidade: [README.md](README.md).
