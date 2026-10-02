@@ -7,6 +7,6 @@ import { CabecalhoPagina } from '../../shared/cabecalho-pagina/cabecalho-pagina'
   imports: [CabecalhoPagina],
   templateUrl: './inicio.html',
   styleUrl: './inicio.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Inicio {}

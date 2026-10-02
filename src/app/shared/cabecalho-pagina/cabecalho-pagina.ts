@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-cabecalho-pagina',
   templateUrl: './cabecalho-pagina.html',
   styleUrl: './cabecalho-pagina.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CabecalhoPagina {
   readonly titulo = input.required<string>();

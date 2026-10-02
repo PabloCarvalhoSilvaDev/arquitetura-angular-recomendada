@@ -7,6 +7,6 @@ import { ChangeDetectionStrategy } from '@angular/core';
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './menu-lateral.html',
   styleUrl: './menu-lateral.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuLateral {}

@@ -7,6 +7,6 @@ import { ChangeDetectionStrategy } from '@angular/core';
   imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {}

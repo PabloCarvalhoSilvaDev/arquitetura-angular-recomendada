@@ -7,6 +7,6 @@ import { ChangeDetectionStrategy } from '@angular/core';
   imports: [CabecalhoPagina],
   templateUrl: './empresas.html',
   styleUrl: './empresas.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Empresas {}

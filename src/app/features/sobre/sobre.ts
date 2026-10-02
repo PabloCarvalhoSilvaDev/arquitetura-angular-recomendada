@@ -7,6 +7,6 @@ import { CabecalhoPagina } from '../../shared/cabecalho-pagina/cabecalho-pagina'
   imports: [CabecalhoPagina],
   templateUrl: './sobre.html',
   styleUrl: './sobre.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Sobre {}

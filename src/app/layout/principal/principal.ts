@@ -8,7 +8,7 @@ import { MenuLateral } from '../menu-lateral/menu-lateral';
   imports: [RouterLink, RouterOutlet, MenuLateral],
   templateUrl: './principal.html',
   styleUrl: './principal.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Principal {
   protected menuLateralAberto = false;
