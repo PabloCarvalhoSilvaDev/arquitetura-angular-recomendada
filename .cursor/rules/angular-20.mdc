@@ -73,6 +73,15 @@ userSelected = output<string>();
 <section [style.font-size.px]="fontSize"></section>
 ```
 
+## Estilos e encapsulamento
+
+- Estilos ficam no `.css` do componente (ou globais em `src/styles.css` para tokens/utilitários).
+- **Não** use `::ng-deep`, `/deep/` nem `>>>` — estão deprecated; quebram encapsulamento e acoplam o pai ao DOM interno do filho.
+- **Não** estilize markup interno de componentes filhos a partir do CSS do pai.
+- Customize filhos via **`input()`** (variantes), objeto **`host`** no `@Component` (classes no host) ou **CSS custom properties** (`var(--token, fallback)`) definidas no wrapper/pai.
+- Para conteúdo customizável, prefira **`ng-content`** (projeção) em vez de seletores profundos.
+- **`ViewEncapsulation.None`** só quando o componente for pensado para isso (ex.: widget de lib); documente o contrato de classes.
+
 ## Estado (signals)
 
 - Transformações previsíveis e puras.
