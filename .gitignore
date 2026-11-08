@@ -1,17 +1,40 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# https://docs.github.com/en/get-started/git-basics/ignoring-files
+# Baseado no padrão do Angular CLI + Node.js (recomendado para SPAs Angular)
 
-# Compiled output
+# --- Build e cache do Angular ---
 /dist
 /tmp
 /out-tsc
 /bazel-out
+/.angular/cache
 
-# Node
+# --- Dependências ---
 /node_modules
-npm-debug.log
-yarn-error.log
 
-# IDEs and editors
+# --- Variáveis de ambiente e segredos (não versionar) ---
+.env
+.env.*
+!.env.example
+
+# --- Logs de package managers ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# --- Testes (Karma / Jasmine) ---
+/coverage
+*.lcov
+/libpeerconnection.log
+testem.log
+/connect.lock
+
+# --- Lint / formatação (cache local) ---
+.eslintcache
+.prettier-cache
+
+# --- IDEs e editores ---
 .idea/
 .project
 .classpath
@@ -19,17 +42,21 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+*.sublime-project
 
-# Visual Studio Code
+# Visual Studio Code (mantém snippets de time versionados, se quiser)
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
+!.vscode/*.code-snippets
+.history/
 
-# Miscellaneous
-/.angular/cache
+# Visual Studio
+.vs/
+
+# --- Sass / assets gerados ---
 .sass-cache/
 /connect.lock
 /coverage
@@ -37,7 +64,10 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+/typings
 
-# System files
+# --- Sistema operacional ---
 .DS_Store
 Thumbs.db
+Desktop.ini
+ehthumbs.db
